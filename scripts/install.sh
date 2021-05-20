@@ -2,7 +2,7 @@
 set -xe
 
 permissionsCheck () {
-	if (( $EUID > 0 )); then
+	if [ $EUID > 0 ] && ![ -f /.dockerenv ]; then
 		echo " - Please run as root"
 		exit
 	fi
